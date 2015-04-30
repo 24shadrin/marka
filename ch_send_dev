@@ -1,0 +1,37 @@
+#!/usr/bin/perl
+
+require "sfile_bw";
+
+$name=$sfile_bw::fn;
+
+
+$f_bw_mar="/home/marka/timelapse/$name";
+
+
+if (-e $f_bw_mar) {
+$cam1=1;
+$cm1="bw_mar_ok";
+}
+    else {
+    $cam1=0;
+    $cm1="bw_mar_error";
+    }
+
+
+$dt=localtime;
+@mas=split(" ",$dt);
+
+     open(my $filo, '>', 'report.txt');
+print $filo $mas[1],' ', $mas[2],' ', "\n";
+@tm=split(":", $mas[3]);
+$tm=join(">",$tm[0],$tm[1],$tm[2]);
+print $filo $tm, "\n";
+print $filo $cm1, "\n";
+$size=-s "$f_bw_mar";
+$size=int($size/1024);
+@f=split("/",$f_bw_mar);
+print $filo $f[4], "\n";
+print $filo $size, "Kb", "\n";
+close $filo;
+
+#system "/bin/cat /etc/mysc/marka/report.txt | /usr/sbin/ssmtp n.v.shadrin"

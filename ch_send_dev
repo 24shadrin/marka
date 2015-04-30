@@ -34,4 +34,4 @@ print $filo $f[4], "\n";
 print $filo $size, "Kb", "\n";
 close $filo;
 
-#system "/bin/cat /etc/mysc/marka/report.txt | /usr/sbin/ssmtp n.v.shadrin"
+system "/bin/cat /etc/mysc/marka/report.txt | /usr/sbin/ssmtp n.v.shadrin"

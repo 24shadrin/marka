@@ -1,0 +1,43 @@
+#!/bin/sh
+
+    a1=$(date | awk '{print $6}')
+    a3=$(date | awk '{print $3}')
+    mon=$(date | awk '{print $2}')
+
+    case $mon in
+    Jan) a2=01 ;;
+    Feb) a2=02 ;;
+    Mar) a2=03 ;;
+    Apr) a2=04 ;;
+    May) a2=05 ;;
+    Jun) a2=06 ;;
+    Jul) a2=07 ;;
+    Aug) a2=08 ;;
+    Sep) a2=09 ;;
+    Oct) a2=10 ;;
+    Nov) a2=11 ;;
+    Dec) a2=12 ;;
+    esac
+
+case $a3 in
+1) a3=01 ;;
+2) a3=02 ;;
+3) a3=03 ;;
+4) a3=04 ;;
+5) a3=05 ;;
+6) a3=06 ;;
+7) a3=07 ;;
+8) a3=08 ;;
+9) a3=09 ;;
+esac
+
+
+path=$a1-$a2-$a3
+
+full=/home/marka/beward/$path
+    cd /web/jpg && rm /web/jpg/*
+pp="Beward 1001/1/"
+
+cd $full/"$pp" && ls $full/"$pp" |grep jpg |xargs cp  --target-directory=/web/jpg
+
+ls /web/jpg > /web/list

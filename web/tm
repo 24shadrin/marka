@@ -3,7 +3,7 @@
 lc=/web/lock/lock
 
 if [ -f $lc ]; then 
-echo "Process already running. Please wait and try again later."
+#echo "Process already running. Please wait and try again later."
 exit
     else
 {
